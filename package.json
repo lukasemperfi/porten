@@ -1,5 +1,16 @@
 {
+  "scripts": {
+    "copy:html": "cpx index.html dist/",
+    "copy:js": "cpx main.js dist/",
+    "copy:css": "cpx style.css dist/",
+    "copy:assets": "cpx \"assets/**/*\" dist/assets",
+    "copy": "npm run copy:html && npm run copy:js && npm run copy:css && npm run copy:assets",
+    "build": "npm run copy",
+    "deploy": "gh-pages -d dist"
+  },
   "devDependencies": {
+    "cpx": "^1.5.0",
+    "gh-pages": "^6.3.0",
     "sass": "^1.92.1"
   }
 }
