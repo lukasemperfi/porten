@@ -163,6 +163,42 @@ $container-1920: 120rem;
 $container-1142: 71.375rem;
 $container-padding: 1rem;
 
+//func
+// Helper function to remove units from values
+@function strip-unit($value) {
+  @if type-of($value) == "number" and not unitless($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  @return $value;
+}
+
+@function calcFluidValue($f-min, $f-max, $w-min, $w-max) {
+  $f-min-unit: unit($f-min);
+  $f-max-unit: unit($f-max);
+  $w-min-unit: unit($w-min);
+  $w-max-unit: unit($w-max);
+
+  $f-min-num: strip-unit($f-min);
+  $f-max-num: strip-unit($f-max);
+  $w-min-num: strip-unit($w-min);
+  $w-max-num: strip-unit($w-max);
+
+  $k: ($f-max-num - $f-min-num) / ($w-max-num - $w-min-num);
+  $b: $f-min-num - $k * $w-min-num;
+
+  // Determine which value is actually min/max for clamp
+  $actual-min: if($f-min-num < $f-max-num, $f-min-num, $f-max-num);
+  $actual-max: if($f-min-num > $f-max-num, $f-min-num, $f-max-num);
+  $actual-min-unit: if($f-min-num < $f-max-num, $f-min-unit, $f-max-unit);
+  $actual-max-unit: if($f-min-num > $f-max-num, $f-min-unit, $f-max-unit);
+
+  @return clamp(
+    #{$actual-min}#{$actual-min-unit},
+    calc(#{$k * 100}vw + #{$b}#{$f-min-unit}),
+    #{$actual-max}#{$actual-max-unit}
+  );
+}
+
 //Globals
 
 html {
@@ -410,6 +446,129 @@ body {
         padding: 20px 16px;
         width: 100%;
       }
+    }
+  }
+}
+
+//Hero Section
+.hero {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: calc(100vw / 2.37033);
+  padding: 8.177083vw 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-image: linear-gradient(
+    to right,
+    #20201e,
+    #2c2b28,
+    #383632,
+    #46413c,
+    #544c48,
+    #574e4b,
+    #5a4f4f,
+    #5c5153,
+    #514a4f,
+    #46444a,
+    #3b3d43,
+    #32373a
+  );
+
+  &__image {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+
+    @media (max-width: $breakpoint-sm) {
+      height: 100%;
+      object-position: center;
+    }
+  }
+
+  .content {
+    text-align: center;
+    position: relative;
+
+    .logo-block {
+      $container-base: 312px;
+      $font-logo-design: 64px;
+      $font-city-design: 22px;
+
+      // min/max font sizes
+      $font-logo-min: 14px;
+      $font-logo-max: 64px;
+
+      $font-city-min: 12px;
+      $font-city-max: 22px;
+
+      @function font-cqw($font, $container) {
+        @return ($font / $container * 100) * 1cqw;
+      }
+
+      color: $color-primary;
+      border: 4px solid $white;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 4.166666vw;
+
+      width: clamp(150px, 16.67vw, 320px);
+      aspect-ratio: 1/1;
+      container-type: inline-size;
+
+      @media (max-width: $breakpoint-sm) {
+        border-width: 2px;
+      }
+
+      &__logo {
+        position: relative;
+        &::after {
+          content: "";
+          display: block;
+          width: 97.09%;
+          height: 2px;
+          background-color: #ffffff;
+          position: absolute;
+          left: 50%;
+          bottom: -2px;
+          transform: translateX(-50%);
+        }
+        .logo {
+          font-size: clamp(
+            $font-logo-min,
+            font-cqw($font-logo-design, $container-base),
+            $font-logo-max
+          );
+        }
+      }
+
+      &__city {
+        font-size: clamp(
+          $font-city-min,
+          font-cqw($font-city-design, $container-base),
+          $font-city-max
+        );
+        text-transform: uppercase;
+        margin-top: 9px;
+      }
+    }
+
+    &__description {
+      font-size: clamp(12px, 0.833333vw, 16px);
+      text-transform: uppercase;
+      width: 38.02084vw;
+      width: calcFluidValue(343px, 730px, 375px, 1920px);
+      line-height: 1.5;
     }
   }
 }
