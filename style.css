@@ -402,7 +402,7 @@ body {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .page-header .mobile-menu {
     display: none;
   }
