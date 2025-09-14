@@ -440,10 +440,9 @@ body {
 
 .hero {
   position: relative;
-  overflow: hidden;
   width: 100%;
-  min-height: calc(100vw / 2.37033);
   padding: 8.177083vw 16px;
+  aspect-ratio: 1920/810;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -457,6 +456,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-image: -webkit-gradient(linear, left top, right top, from(#20201e), color-stop(#2c2b28), color-stop(#383632), color-stop(#46413c), color-stop(#544c48), color-stop(#574e4b), color-stop(#5a4f4f), color-stop(#5c5153), color-stop(#514a4f), color-stop(#46444a), color-stop(#3b3d43), to(#32373a));
+  background-image: linear-gradient(to right, #20201e, #2c2b28, #383632, #46413c, #544c48, #574e4b, #5a4f4f, #5c5153, #514a4f, #46444a, #3b3d43, #32373a);
 }
 
 .hero__image {
@@ -468,14 +469,6 @@ body {
   left: 0;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-@media (max-width: 48rem) {
-  .hero__image {
-    height: 100%;
-    -o-object-position: center;
-       object-position: center;
-  }
 }
 
 .hero .content {
