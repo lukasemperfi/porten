@@ -115,6 +115,7 @@ ul li {
 
 img {
   vertical-align: top;
+  max-width: 100%;
 }
 
 html {
@@ -537,5 +538,99 @@ body {
   width: 38.02084vw;
   width: clamp(343px, calc(25.04854vw + 249.06796px), 730px);
   line-height: 1.5;
+}
+
+.new-collection .media-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.new-collection .media-block__col-1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 54.1666%;
+          flex: 1 1 54.1666%;
+}
+
+.new-collection .media-block__col-2 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 45.83333%;
+          flex: 1 1 45.83333%;
+  position: relative;
+  aspect-ratio: 880/730;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 5.20833vw;
+}
+
+.new-collection .media-block__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.new-collection .media-block__content {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+}
+
+.new-collection .media-block__title::after {
+  margin-top: 26px;
+}
+
+.title-h2 {
+  font-family: "Playfair Display", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.title-h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 40px auto 0 auto;
+}
+
+.button {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 11px 26px;
+}
+
+.button:hover {
+  background-color: #d0d0d0;
 }
 /*# sourceMappingURL=style.css.map */

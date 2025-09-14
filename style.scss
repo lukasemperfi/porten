@@ -127,6 +127,7 @@ ul li {
 
 img {
   vertical-align: top;
+  max-width: 100%;
 }
 
 //Variables
@@ -564,5 +565,88 @@ body {
       width: calcFluidValue(343px, 730px, 375px, 1920px);
       line-height: 1.5;
     }
+  }
+}
+
+//new-collection Section
+.new-collection {
+  .media-block {
+    display: flex;
+
+    &__col-1 {
+      flex: 1 1 54.1666%;
+    }
+    &__col-2 {
+      flex: 1 1 45.83333%;
+      position: relative;
+      aspect-ratio: 880/730;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 5.20833vw;
+    }
+
+    &__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    &__title {
+      &::after {
+        margin-top: 26px;
+      }
+    }
+  }
+}
+
+///Global Components
+/// Title H2
+.title-h2 {
+  font-family: $font-family-secondary;
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+  text-align: center;
+  color: $white;
+  line-height: 1;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 2px;
+    background-color: $white;
+    margin: 40px auto 0 auto;
+  }
+}
+
+/// Button
+.button {
+  font-family: $font-family-primary;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: $white;
+
+  border: 1px solid $white;
+  padding: 11px 26px;
+
+  &:hover {
+    background-color: $light-gray;
   }
 }
