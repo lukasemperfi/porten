@@ -1,5 +1,8 @@
+import { products2122 } from "./products-2021-22.js";
+
 addEventListener("DOMContentLoaded", (event) => {
   initHeaderMenu();
+  initNewCollectionProductsSlider();
 });
 
 // Header Menu
@@ -31,6 +34,77 @@ function closeMobileMenu(mobileMenu) {
   mobileMenu.classList.remove("mobile-menu--open");
 
   document.body.style.overflow = "";
+}
+
+//Product Slider
+function initNewCollectionProductsSlider() {
+  const sliderOptions = {
+    slidesPerView: 2,
+    spaceBetween: 10,
+    loop: true,
+
+    breakpoints: {
+      624: {
+        slidesPerView: 3,
+        // spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1440: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      1920: {
+        slidesPerView: 3,
+        spaceBetween: 50,
+      },
+    },
+
+    navigation: {
+      nextEl: ".products-list-slider__button-next",
+      prevEl: ".products-list-slider__button-prev",
+    },
+  };
+
+  const sliderWrapper = document.querySelector(
+    ".media-block__products-slider-wrapper"
+  );
+  sliderWrapper.innerHTML = `
+                            <div class="products-list-slider__button-prev"></div>
+                            <div class="swiper products-list-slider">
+                                <div class="swiper-wrapper">
+                                ${products2122
+                                  .map(
+                                    (product) => `
+                                    <div class="swiper-slide">
+                                        <div class="product-card">
+                                            <div class="product-card__image-wrapper">
+                                                <img src="${product.image}"
+                                                    alt="Product card" class="product-card__image">
+                                            </div>
+                                            <div class="product-card__title">${product.title}</div>
+                                            <div class="product-card__price">${product.price}</div>
+                                        </div>
+                                    </div>
+                                `
+                                  )
+                                  .join("")}
+                                </div>
+                            </div>
+                            <div class="products-list-slider__button-next"></div>
+  `;
+
+  initSlider(".products-list-slider", sliderOptions);
+}
+
+function initSlider(className, options) {
+  const sliderOptions = {
+    ...options,
+  };
+
+  const swiperInstance = new Swiper(className, sliderOptions);
 }
 
 // const burgerButton = this.querySelector('.header__burger-button');

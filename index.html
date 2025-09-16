@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" crossorigin>
+    <link rel="stylesheet" href="./swiper-bundle.min.css">
+
     <title>Home Page</title>
 </head>
 
 <body>
     <div class="wrapper">
-        <header class="page-header container-1920">
+        <header class="page-header">
             <div class="topbar">
                 <div class="topbar__content container-1142">
                     <div class="topbar__info">
@@ -97,7 +99,7 @@
             </div>
         </header>
         <main class="main">
-            <section class="hero">
+            <section class="hero container-1920">
                 <img class="hero__image" src="./assets/images/home-page/hero-section/hero-background.jpg"
                     alt="Hero Background" fetchpriority=high>
                 <div class="hero__content content">
@@ -116,12 +118,19 @@
             </section>
             <section class="new-collection container-1920">
                 <div class="new-collection__media-block media-block">
-                    <div class="media-block__col-1"></div>
+                    <div class="media-block__col-1">
+                        <div class="media-block__title">
+                            <h2 class="media-block__products-title title-h2">СЕЗОН 2021/22</h2>
+                        </div>
+                        <div class="media-block__products-slider-wrapper"></div>
+                        <nav-tight-button direction="right"></nav-tight-button>
+                    </div>
                     <div class="media-block__col-2">
+
                         <img src="./assets/images/home-page/new-collection-section/new-collection-background.jpg"
                             alt="New Collection" class="media-block__image" loading="lazy">
                         <div class="media-block__content">
-                            <h2 class="media-block__title title-h2">Нова колекція</h2>
+                            <h2 class="media-block__content-title title-h2">Нова колекція</h2>
                             <a href="#" class="media-block__link button">Каталог</a>
                         </div>
                     </div>
@@ -288,6 +297,7 @@
 
 
     <script type="module" src="./main.js"></script>
+    <script src="./swiper-bundle.min.js"></script>
 </body>
 
 </html>
