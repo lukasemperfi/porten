@@ -49,12 +49,12 @@ function initNewCollectionProductsSlider() {
         // spaceBetween: 20,
       },
       768: {
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 20,
       },
-      1440: {
+      914: {
         slidesPerView: 3,
-        spaceBetween: 30,
+        spaceBetween: 50,
       },
       1920: {
         slidesPerView: 3,
