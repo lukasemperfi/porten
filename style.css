@@ -845,7 +845,7 @@ body {
 
 .our-partners {
   padding-top: clamp(30px, 2.5889967638vw + 20.2912621359px, 70px);
-  padding-bottom: clamp(30px, 4.5307443366vw + 13.0097087379px, 100px);
+  padding-bottom: clamp(30px, 4.854368932vw + 11.7961165049px, 105px);
 }
 .our-partners__title {
   margin-bottom: 76px;
@@ -957,6 +957,134 @@ body {
   display: flex;
   align-items: flex-end;
 }
+.page-footer .footer-top {
+  position: relative;
+  aspect-ratio: 1920/450;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+@media (min-width: 1440px) {
+  .page-footer .footer-top {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+}
+.page-footer .footer-top::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: #0f0f0f;
+  opacity: 0.85;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .page-footer .footer-top .container-1142 {
+    max-width: 628px;
+  }
+}
+.page-footer .footer-top__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -2;
+}
+.page-footer .footer-top .grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;
+}
+@media (min-width: 1024px) {
+  .page-footer .footer-top .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.page-footer .footer-top .grid__title {
+  font-family: "Playfair Display", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 42px;
+}
+.page-footer .footer-top .grid__description {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+.page-footer .footer-top .grid__category-list {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+.page-footer .footer-top .form {
+  display: grid;
+  grid-template-columns: 210px 137px;
+  margin-top: 26px;
+}
+.page-footer .footer-top .form__input {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #d0d0d0;
+  padding-block: 11px;
+  padding-inline: 15px;
+}
+.page-footer .footer-top .form__input::-moz-placeholder {
+  font-family: "PT Sans", sans-serif;
+  color: #d0d0d0;
+  font-size: 14px;
+}
+.page-footer .footer-top .form__input::placeholder {
+  font-family: "PT Sans", sans-serif;
+  color: #d0d0d0;
+  font-size: 14px;
+}
+.page-footer .footer-top .form__button {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+.page-footer .footer-bottom {
+  background-color: #0f0f0f;
+  padding-block: 17px;
+}
+.page-footer .footer-bottom__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+@media (min-width: 550px) {
+  .page-footer .footer-bottom__content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.page-footer .footer-bottom__copyright {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #d0d0d0;
+}
+.page-footer .footer-bottom__user-agreement {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  text-decoration: underline;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  text-align: right;
+  color: #d0d0d0;
+}
+
 .title-h2 {
   font-family: "Playfair Display", sans-serif;
   font-weight: 700;
@@ -979,7 +1107,7 @@ body {
   margin-top: clamp(30px, 0.6472491909vw + 27.572815534px, 40px);
 }
 
-.button {
+.button-secondary, .button {
   font-family: "PT Sans", sans-serif;
   font-weight: 400;
   font-size: clamp(14px, 0.2588996764vw + 13.0291262136px, 18px);
@@ -990,12 +1118,23 @@ body {
   white-space: nowrap;
   border: 1px solid #ffffff;
   padding: 11px 26px;
+  transition: 0.3s;
 }
-.button:hover {
+.button-secondary:hover, .button:hover {
   background-color: rgba(208, 208, 208, 0.3882352941);
   color: #000000;
 }
 
+.button-secondary {
+  font-size: 14px;
+  color: #d0d0d0;
+  background-color: #0f0f0f;
+  border: none;
+  text-transform: none;
+  letter-spacing: normal;
+  padding-inline: 20px;
+  padding-block: 11px;
+}
 .product-card {
   display: flex;
   flex-direction: column;
