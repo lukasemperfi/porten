@@ -1,3 +1,4 @@
+import { partners } from "./our-partners.js";
 import { products2122 } from "./products-2021-22.js";
 import { productsNewGoods } from "./products-new-goods.js";
 
@@ -5,6 +6,7 @@ addEventListener("DOMContentLoaded", (event) => {
   initHeaderMenu();
   initNewCollectionProductsSlider();
   initNewGoodsProductsSlider();
+  initOurPartnersSlider();
 });
 
 // Header Menu
@@ -205,6 +207,57 @@ function initNewGoodsProductsSlider() {
       </div>
   `;
   }
+}
+
+//Our Brands
+function initOurPartnersSlider() {
+  let sliderInstance = null;
+  const sliderWrapper = document.querySelector(".our-partners__slider-wrapper");
+
+  sliderWrapper.innerHTML = `
+           
+    <div class="swiper our-partners-slider">
+        <div class="swiper-wrapper">
+            ${partners
+              .map(
+                (partner) => `
+            <div class="swiper-slide">                        
+                <img class="our-partners-slider__image" src=${partner.image} />                        
+            </div>
+            `
+              )
+              .join("")}
+        </div>
+    </div>
+    
+`;
+
+  const sliderOptions = {
+    slidesPerView: 2,
+    spaceBetween: 16,
+    loop: true,
+    speed: 4000,
+    autoplay: {
+      delay: 1,
+      disableOnInteraction: false,
+    },
+
+    breakpoints: {
+      450: { slidesPerView: 2, spaceBetween: 16 },
+      624: { slidesPerView: 3, spaceBetween: 20 },
+      768: { slidesPerView: 3, spaceBetween: 20 },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+    },
+    navigation: {
+      nextEl: ".our-partners-slider__button-next",
+      prevEl: ".our-partners-slider__button-prev",
+    },
+  };
+
+  sliderInstance = new Swiper(".our-partners-slider", sliderOptions);
 }
 
 //Products Slider

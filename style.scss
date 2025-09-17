@@ -984,6 +984,12 @@ body {
     margin-bottom: 59px;
   }
 
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
   .article {
     display: grid;
     grid-template-columns: 1fr;
@@ -1054,6 +1060,133 @@ body {
         }
       }
     }
+  }
+}
+
+//Our Brands
+.our-partners {
+  padding-top: calcFluidValue(30px, 70px, 375px, 1920px);
+  padding-bottom: calcFluidValue(30px, 100px, 375px, 1920px);
+
+  &__title {
+    margin-bottom: 76px;
+  }
+
+  &__slider-wrapper {
+    display: flex;
+    height: auto;
+    padding-inline: 16px;
+    max-width: 1386px;
+    margin-inline: auto;
+  }
+
+  .our-partners-slider {
+    &.swiper {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+
+      .swiper-wrapper {
+        height: auto;
+        align-items: flex-end;
+        transition-timing-function: linear !important;
+
+        @media (min-width: 1440px) {
+          align-items: center;
+        }
+      }
+
+      & .swiper-slide {
+        cursor: grab;
+        // height: auto;
+
+        img {
+          width: 100%;
+
+          @media (min-width: 1920px) {
+            width: auto;
+          }
+        }
+      }
+    }
+
+    &__button-next {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // margin-right: -16px;
+      padding: 0 10px;
+      cursor: pointer;
+
+      @media (min-width: 768px) {
+        margin-right: 0;
+      }
+
+      @media (min-width: 1440px) {
+        padding-inline: 13px;
+      }
+
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 22px 0px 22px 27px;
+        border-color: transparent transparent transparent #ffffff8c;
+
+        @media (min-width: 1440px) {
+          border-width: 44px 0px 44px 54px;
+        }
+      }
+    }
+
+    &__button-prev {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // margin-left: -16px;
+      padding: 0 10px;
+      cursor: pointer;
+
+      @media (min-width: 768px) {
+        margin-left: 0;
+      }
+      @media (min-width: 1440px) {
+        padding-inline: 13px;
+      }
+
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 22px 27px 22px 0px;
+        border-color: transparent #ffffff8c transparent transparent;
+
+        @media (min-width: 1440px) {
+          border-width: 44px 54px 44px 0px;
+        }
+      }
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-inline: auto;
+    gap: 30px;
+    padding-inline: 16px;
+  }
+
+  &__grid-item {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__grid-image {
   }
 }
 
