@@ -90,7 +90,7 @@ function initNewCollectionProductsSlider() {
                                         <div class="product-card">
                                             <div class="product-card__image-wrapper">
                                                 <img src="${product.image}"
-                                                    alt="Product card" class="product-card__image">
+                                                    alt=${product.title} class="product-card__image" loading="lazy">
                                             </div>
                                             <div class="product-card__title">${product.title}</div>
                                             <div class="product-card__price">${product.price}</div>
@@ -148,7 +148,7 @@ function initNewGoodsProductsSlider() {
             <div class="swiper-slide">
               <div class="product-card">
                 <div class="product-card__image-wrapper">
-                  <img src="${product.image}" alt="Product card" class="product-card__image">
+                  <img src="${product.image}" alt=${product.title} class="product-card__image" loading="lazy">
                 </div>
                 <div class="product-card__title">${product.title}</div>
                 <div class="product-card__price">${product.price}</div>
@@ -190,7 +190,7 @@ function initNewGoodsProductsSlider() {
             (product) => `
             <div class="product-card">
               <div class="product-card__image-wrapper">
-                <img src="${product.image}" alt="Product card" class="product-card__image">
+                <img src="${product.image}" alt="${product.title} class="product-card__image" loading="lazy">
               </div>
               <div class="product-card__title">${product.title}</div>
               <div class="product-card__price">${product.price}</div>
@@ -200,7 +200,7 @@ function initNewGoodsProductsSlider() {
           .join("")}
             <div class="product-card">
               <div class="product-card__image-wrapper">
-                <img src="./assets/images/products/jord-ar5905.webp" alt="Product card" class="product-card__image">
+                <img src="./assets/images/products/jord-ar5905.webp" alt="Show All Background" class="product-card__image" loading="lazy">
                  <a href="#" class="new-goods__link button">ПОКАЗАТИ ВСІ</a>
               </div>
           </div>
@@ -222,7 +222,7 @@ function initOurPartnersSlider() {
               .map(
                 (partner) => `
             <div class="swiper-slide">                        
-                <img class="our-partners-slider__image" src=${partner.image} />                        
+                <img class="our-partners-slider__image" src=${partner.image} loading="lazy" alt="Logo"/>                        
             </div>
             `
               )

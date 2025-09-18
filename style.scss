@@ -409,7 +409,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: $black-90;
+    background: $black-100;
     z-index: 2;
     opacity: 0;
     visibility: hidden;
@@ -418,9 +418,9 @@ body {
     transform: translateX(-100%);
     transition: 0.3s;
 
-    @media (min-width: 500px) {
-      width: 50vw;
-    }
+    // @media (min-width: 500px) {
+    //   width: 50vw;
+    // }
 
     @media (min-width: 769px) {
       display: none;
