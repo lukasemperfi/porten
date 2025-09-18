@@ -90,7 +90,7 @@ function initNewCollectionProductsSlider() {
                                         <div class="product-card">
                                             <div class="product-card__image-wrapper">
                                                 <img src="${product.image}"
-                                                    alt=${product.title} class="product-card__image" loading="lazy">
+                                                    alt="${product.title}" class="product-card__image" loading="lazy">
                                             </div>
                                             <div class="product-card__title">${product.title}</div>
                                             <div class="product-card__price">${product.price}</div>
@@ -148,7 +148,7 @@ function initNewGoodsProductsSlider() {
             <div class="swiper-slide">
               <div class="product-card">
                 <div class="product-card__image-wrapper">
-                  <img src="${product.image}" alt=${product.title} class="product-card__image" loading="lazy">
+                  <img src="${product.image}" alt="${product.title}" class="product-card__image" loading="lazy">
                 </div>
                 <div class="product-card__title">${product.title}</div>
                 <div class="product-card__price">${product.price}</div>
@@ -190,7 +190,7 @@ function initNewGoodsProductsSlider() {
             (product) => `
             <div class="product-card">
               <div class="product-card__image-wrapper">
-                <img src="${product.image}" alt="${product.title} class="product-card__image" loading="lazy">
+                <img src="${product.image}" alt="${product.title}" class="product-card__image" loading="lazy">
               </div>
               <div class="product-card__title">${product.title}</div>
               <div class="product-card__price">${product.price}</div>
