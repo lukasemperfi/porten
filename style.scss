@@ -1215,7 +1215,7 @@ body {
     }
 
     .container-1142 {
-      @media (min-width: 768px) and (max-width: 1024px) {
+      @media (min-width: 768px) and (max-width: 1440px) {
         max-width: 628px;
       }
     }
@@ -1236,7 +1236,7 @@ body {
       grid-template-columns: repeat(1, 1fr);
       gap: 30px;
 
-      @media (min-width: 1024px) {
+      @media (min-width: 1440px) {
         grid-template-columns: repeat(3, 1fr);
       }
 
