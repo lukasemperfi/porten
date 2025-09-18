@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "scripts": {
     "copy:html": "cpx index.html dist/",
     "copy:js": "cpx main.js dist/",
