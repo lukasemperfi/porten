@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" crossorigin>
-    <link rel="stylesheet" href="./swiper-bundle.min.css">
+    <link rel="stylesheet" href="./swiper-bundle.min.css" media="print" onload="this.media='all'">
 
     <title>Home Page</title>
 </head>
@@ -100,8 +100,13 @@
         </header>
         <main class="main">
             <section class="hero container-1920">
-                <img class="hero__image" src="./assets/images/home-page/hero-section/hero-background.jpg"
-                    alt="Hero Background" fetchpriority=high>
+                <picture>
+                    <source srcset="./assets/images/home-page/hero-section/hero-background.jpg"
+                        media="(min-width: 898px)" />
+                    <img class="hero__image"
+                        src="./assets/images/home-page/hero-section/hero-background-897px-378px.jpg"
+                        alt="Hero Background" fetchpriority=high>
+                </picture>
                 <div class="hero__content content">
                     <div class="content__logo-block logo-block">
                         <a href="#" class="logo-block__logo">
@@ -140,8 +145,14 @@
                 <div class="collection-2018__block block">
                     <div class="block__col-1">
                         <div class="block__image-wrapper">
-                            <img src="./assets/images/home-page/collection-2018-section/collection-2018.background.jpg"
-                                alt="Collection 2018" class="block__image" loading="lazy">
+                            <picture>
+                                <source
+                                    srcset="./assets/images/home-page/collection-2018-section/collection-2018.background.jpg"
+                                    media="(min-width: 413px)" />
+                                <img src="./assets/images/home-page/collection-2018-section/collection-2018-background-412px-264px.jpg"
+                                    alt="Collection 2018" class="block__image" loading="lazy">
+                            </picture>
+
                         </div>
                     </div>
                     <div class="block__col-2">

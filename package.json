@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "cpx": "^1.5.0",
+    "critical": "^7.2.1",
     "gh-pages": "^6.3.0",
     "sass": "^1.92.1"
   }
