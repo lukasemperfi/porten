@@ -425,7 +425,7 @@ body {
 .new-collection .media-block__col-2 {
   width: 100%;
   position: relative;
-  aspect-ratio: 880/730;
+  aspect-ratio: 375/311;
   display: flex;
   align-items: flex-end;
   justify-content: center;
