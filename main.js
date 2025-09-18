@@ -1,5 +1,12 @@
+import { partners } from "./our-partners.js";
+import { products2122 } from "./products-2021-22.js";
+import { productsNewGoods } from "./products-new-goods.js";
+
 addEventListener("DOMContentLoaded", (event) => {
   initHeaderMenu();
+  initNewCollectionProductsSlider();
+  initNewGoodsProductsSlider();
+  initOurPartnersSlider();
 });
 
 // Header Menu
@@ -33,63 +40,231 @@ function closeMobileMenu(mobileMenu) {
   document.body.style.overflow = "";
 }
 
-// const burgerButton = this.querySelector('.header__burger-button');
-// const mobileMenu = this.querySelector('.header__mobile-menu');
+//New Collection Slider
+function initNewCollectionProductsSlider() {
+  const sliderOptions = {
+    slidesPerView: 1,
+    // spaceBetween: 10,
+    loop: true,
 
-// burgerButton.addEventListener('click', () => {
-//   this.toggleMobileMenu();
-// });
+    breakpoints: {
+      450: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      624: {
+        slidesPerView: 3,
+        spaceBetween: 10,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      914: {
+        slidesPerView: 3,
+        spaceBetween: 50,
+      },
+      1920: {
+        slidesPerView: 3,
+        spaceBetween: 50,
+      },
+    },
 
-// // Close mobile menu when clicking outside
-// document.addEventListener('click', e => {
-//   if (!this.contains(e.target) && this.isMobileMenuOpen) {
-//     this.closeMobileMenu();
-//   }
-// });
+    navigation: {
+      nextEl: ".products-list-slider__button-next",
+      prevEl: ".products-list-slider__button-prev",
+    },
+  };
 
-// // Close mobile menu on escape key
-// document.addEventListener('keydown', e => {
-//   if (e.key === 'Escape' && this.isMobileMenuOpen) {
-//     this.closeMobileMenu();
-//   }
-// });
+  const sliderWrapper = document.querySelector(
+    ".media-block__products-slider-wrapper"
+  );
+  sliderWrapper.innerHTML = `
+                            <div class="products-list-slider__button-prev"></div>
+                            <div class="swiper products-list-slider">
+                                <div class="swiper-wrapper">
+                                ${products2122
+                                  .map(
+                                    (product) => `
+                                    <div class="swiper-slide">
+                                        <div class="product-card">
+                                            <div class="product-card__image-wrapper">
+                                                <img src="${product.image}"
+                                                    alt="${product.title}" class="product-card__image" loading="lazy">
+                                            </div>
+                                            <div class="product-card__title">${product.title}</div>
+                                            <div class="product-card__price">${product.price}</div>
+                                        </div>
+                                    </div>
+                                `
+                                  )
+                                  .join("")}
+                                </div>
+                            </div>
+                            <div class="products-list-slider__button-next"></div>
+  `;
 
-// window.addEventListener('resize', () => {
-//   if (this.isMobileMenuOpen && window.innerWidth >= 1100) {
-//     this.closeMobileMenu();
-//   }
-// });
+  initSlider(".products-list-slider", sliderOptions);
+}
 
-// toggleMobileMenu() {
-// if (this.isMobileMenuOpen) {
-//   this.closeMobileMenu();
-// } else {
-//   this.openMobileMenu();
-// }
-// }
+// New Goods Slider
+function initNewGoodsProductsSlider() {
+  let sliderInstance = null; // будем хранить инстанс слайдера
+  const sliderWrapper = document.querySelector(
+    ".new-goods__products-container"
+  );
+  const mediaQuery = window.matchMedia("(min-width: 1440px)");
 
-// openMobileMenu() {
-// this.isMobileMenuOpen = true;
-// const mobileMenu = this.querySelector('.header__mobile-menu');
-// const burgerButton = this.querySelector('.header__burger-button');
+  function handleWidthChange(e) {
+    if (e.matches) {
+      // больше 1440 — уничтожаем слайдер если есть
+      if (sliderInstance) {
+        sliderInstance.destroy(true, true);
+        sliderInstance = null;
+      }
 
-// mobileMenu.setAttribute('aria-hidden', 'false');
-// mobileMenu.classList.add('header__mobile-menu--open');
-// burgerButton.classList.add('header__burger-button--active');
+      createGrid();
+    } else {
+      // меньше 1440 — создаем слайдер если его нет
+      createSlider();
+    }
+  }
 
-// // Prevent body scroll
-// document.body.style.overflow = 'hidden';
-// }
+  mediaQuery.addEventListener("change", handleWidthChange);
 
-// closeMobileMenu() {
-// this.isMobileMenuOpen = false;
-// const mobileMenu = this.querySelector('.header__mobile-menu');
-// const burgerButton = this.querySelector('.header__burger-button');
+  // первый запуск
+  handleWidthChange(mediaQuery);
 
-// mobileMenu.setAttribute('aria-hidden', 'true');
-// mobileMenu.classList.remove('header__mobile-menu--open');
-// burgerButton.classList.remove('header__burger-button--active');
+  function createSlider() {
+    sliderWrapper.classList.remove("new-goods__grid-wrapper");
+    sliderWrapper.classList.add("new-goods__slider-wrapper");
+    sliderWrapper.innerHTML = `
+      <div class="new-goods-slider__button-prev"></div>
+      <div class="swiper new-goods-slider">
+        <div class="swiper-wrapper">
+          ${productsNewGoods
+            .map(
+              (product) => `
+            <div class="swiper-slide">
+              <div class="product-card">
+                <div class="product-card__image-wrapper">
+                  <img src="${product.image}" alt="${product.title}" class="product-card__image" loading="lazy">
+                </div>
+                <div class="product-card__title">${product.title}</div>
+                <div class="product-card__price">${product.price}</div>
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+      </div>
+      <div class="new-goods-slider__button-next"></div>
+    `;
 
-// // Restore body scroll
-// document.body.style.overflow = '';
-// }
+    const sliderOptions = {
+      slidesPerView: 1,
+      breakpoints: {
+        450: { slidesPerView: 2, spaceBetween: 10 },
+        624: { slidesPerView: 3, spaceBetween: 10 },
+        768: { slidesPerView: 3, spaceBetween: 23 },
+        914: { slidesPerView: 3, spaceBetween: 23 },
+        1920: { slidesPerView: 3, spaceBetween: 23 },
+      },
+      navigation: {
+        nextEl: ".new-goods-slider__button-next",
+        prevEl: ".new-goods-slider__button-prev",
+      },
+    };
+
+    sliderInstance = new Swiper(".new-goods-slider", sliderOptions);
+  }
+
+  function createGrid() {
+    sliderWrapper.classList.remove("new-goods__slider-wrapper");
+    sliderWrapper.classList.add("new-goods__grid-wrapper");
+    sliderWrapper.innerHTML = `
+      <div class="new-goods__grid">
+        ${productsNewGoods
+          .map(
+            (product) => `
+            <div class="product-card">
+              <div class="product-card__image-wrapper">
+                <img src="${product.image}" alt="${product.title}" class="product-card__image" loading="lazy">
+              </div>
+              <div class="product-card__title">${product.title}</div>
+              <div class="product-card__price">${product.price}</div>
+          </div>
+        `
+          )
+          .join("")}
+            <div class="product-card">
+              <div class="product-card__image-wrapper">
+                <img src="./assets/images/products/jord-ar5905.webp" alt="Show All Background" class="product-card__image" loading="lazy">
+                 <a href="#" class="new-goods__link button">ПОКАЗАТИ ВСІ</a>
+              </div>
+          </div>
+      </div>
+  `;
+  }
+}
+
+//Our Brands
+function initOurPartnersSlider() {
+  let sliderInstance = null;
+  const sliderWrapper = document.querySelector(".our-partners__slider-wrapper");
+
+  sliderWrapper.innerHTML = `
+           
+    <div class="swiper our-partners-slider">
+        <div class="swiper-wrapper">
+            ${partners
+              .map(
+                (partner) => `
+            <div class="swiper-slide">                        
+                <img class="our-partners-slider__image" src=${partner.image} loading="lazy" alt="Logo"/>                        
+            </div>
+            `
+              )
+              .join("")}
+        </div>
+    </div>
+    
+`;
+
+  const sliderOptions = {
+    slidesPerView: 2,
+    spaceBetween: 16,
+    loop: true,
+    speed: 4000,
+    autoplay: {
+      delay: 1,
+      disableOnInteraction: false,
+    },
+
+    breakpoints: {
+      450: { slidesPerView: 2, spaceBetween: 16 },
+      624: { slidesPerView: 3, spaceBetween: 20 },
+      768: { slidesPerView: 3, spaceBetween: 20 },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+    },
+    navigation: {
+      nextEl: ".our-partners-slider__button-next",
+      prevEl: ".our-partners-slider__button-prev",
+    },
+  };
+
+  sliderInstance = new Swiper(".our-partners-slider", sliderOptions);
+}
+
+//Products Slider
+function initSlider(className, options) {
+  const sliderOptions = {
+    ...options,
+  };
+
+  return new Swiper(className, sliderOptions);
+}
